@@ -8,6 +8,22 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+  .apply-btn{
+    display:block;
+    margin-top:10px;
+    text-align:center;
+    background:#16a34a;
+    color:#fff;
+    text-decoration:none;
+    padding:11px;
+    border-radius:6px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.apply-btn:hover{
+    background:#15803d;
+}
   :root {
     --brand: #2164f3;
     --brand-dark: #164bc4;
@@ -95,6 +111,88 @@
     transition: background 0.2s ease;
   }
   .search-bar button:hover { background: #106b32; }
+  <section class="why-join">
+
+.why-join{
+    max-width:1100px;
+    margin:80px auto;
+    padding:20px;
+}
+
+.why-join h2{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.feature{
+    background:#fff;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    text-align:center;
+}
+📈
+<h3>Career Growth</h3>
+<p>Work with experienced professionals and grow your career.</p>
+</div>
+
+<div class="feature">
+🌍
+<h3>Global Clients</h3>
+<p>Collaborate with international B2B organizations.</p>
+</div>
+
+<div class="feature">
+📚
+<h3>Learning Culture</h3>
+<p>Continuous training and skill development.</p>
+</div>
+
+<div class="feature">
+🤝
+<h3>Great Team</h3>
+<p>Friendly work environment with collaborative teams.</p>
+</div>
+
+</div>
+
+</section>
+  footer{
+    background:#1f2937;
+    color:white;
+    padding:60px 20px;
+    margin-top:80px;
+}
+
+.footer-container{
+    max-width:900px;
+    margin:auto;
+}
+
+footer h2,
+footer h3{
+    color:white;
+}
+
+footer p{
+    color:#d1d5db;
+    line-height:1.8;
+}
+
+footer a{
+    color:#60a5fa;
+    text-decoration:none;
+}
+
+footer a:hover{
+    text-decoration:underline;
+}
 
   /* ── Results header ────────────────────────────────── */
   .results-bar {
@@ -170,12 +268,50 @@
     animation: fadeInUp 0.4s ease both;
   }
 
-  footer {
-    text-align: center; padding: 30px 24px 56px;
-    font-size: 12.5px; color: var(--ink-soft);
-    border-top: 1px solid var(--line);
-  }
-  footer a { color: var(--brand); }
+<footer>
+
+<div class="footer-container">
+
+<h2>Contact HR</h2>
+
+<p>
+📧 <strong>Apply:</strong>
+<a href="mailto:hr@manlitics.com">hr@manlitics.com</a>
+</p>
+
+<p>
+📱 <strong>WhatsApp:</strong>
+<a href="https://wa.me/917391094394" target="_blank">
++91 73910 94394
+</a>
+</p>
+
+<p>
+☎ <strong>Office:</strong>
+077588 86468
+</p>
+
+<h3>Office Address</h3>
+
+<p>
+
+EFC Office Space – Business Center<br>
+
+1st Floor, Phase 1,<br>
+
+Rajiv Gandhi Infotech Park,<br>
+
+Hinjawadi,<br>
+
+Pimpri-Chinchwad,<br>
+
+Maharashtra 411057
+
+</p>
+
+</div>
+
+</footer>
 
   /* ── Motion ────────────────────────────────────────── */
   @keyframes fadeInUp {
@@ -303,9 +439,21 @@
           </div>
           <p class="ticket-desc">${job.blurb}</p>
         </div>
-        <div class="ticket-action">
-          <a class="view-btn" href="${job.file}" target="_blank" rel="noopener">${fileMeta(job.file)} ↗</a>
-        </div>
+<div class="ticket-action">
+
+  <a class="view-btn"
+     href="${job.file}"
+     target="_blank"
+     rel="noopener">
+     View JD
+  </a>
+
+  <a class="apply-btn"
+     href="mailto:hr@manlitics.com?subject=Application for ${job.title}">
+     Apply Now
+  </a>
+
+</div>
       </article>
     `).join('');
   }
