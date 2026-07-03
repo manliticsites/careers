@@ -14,25 +14,22 @@
         body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink); margin: 0; line-height: 1.6; }
         .wrap { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
         
-        /* Hero & Header */
         header { background: linear-gradient(135deg, var(--brand), var(--brand-dark)); color: white; padding: 60px 20px; text-align: center; }
         
-        /* Job Tickets */
         .board { display: grid; gap: 20px; margin-top: 40px; }
         .ticket { background: white; padding: 25px; border-radius: 12px; border-left: 6px solid var(--brand); display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: 0.3s; }
         .ticket:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .status-badge { font-size: 12px; font-weight: 700; padding: 4px 8px; border-radius: 4px; margin-bottom: 8px; display: inline-block; }
+        .status-badge { font-size: 11px; font-weight: 700; padding: 4px 8px; border-radius: 4px; margin-bottom: 8px; display: inline-block; text-transform: uppercase; }
         .open { background: #dcfce7; color: var(--green); }
         .closed { background: #fee2e2; color: var(--red); }
         
-        /* Buttons */
         .btn-group { display: flex; gap: 10px; }
-        .btn { padding: 10px 18px; border-radius: 6px; text-decoration: none; font-size: 14px; font-weight: 600; transition: 0.3s; }
+        .btn { padding: 10px 18px; border-radius: 6px; text-decoration: none; font-size: 14px; font-weight: 600; transition: 0.3s; min-width: 110px; text-align: center; }
         .view-btn { background: var(--brand); color: white; }
+        .view-btn:hover { background: var(--brand-dark); }
         .apply-btn { background: var(--green); color: white; }
-        .apply-btn:disabled { background: #ccc; cursor: not-allowed; }
+        .btn-closed { background: #94a3b8 !important; cursor: default; color: #ffffff; }
 
-        /* Footer */
         footer { background: #1f2937; color: #d1d5db; padding: 60px 20px; margin-top: 80px; }
         footer a { color: #60a5fa; text-decoration: none; }
         
@@ -70,7 +67,9 @@
     ];
 
     const board = document.getElementById('job-board');
-    board.innerHTML = jobs.map(j => `
+    board.innerHTML = jobs.map(j => {
+        const isClosed = j.status === 'Closed';
+        return `
         <article class="ticket">
             <div>
                 <span class="status-badge ${j.status.toLowerCase()}">${j.status}</span>
@@ -79,13 +78,13 @@
             </div>
             <div class="btn-group">
                 <a href="${j.file}" class="btn view-btn">View JD</a>
-                <a href="mailto:hr@manlitics.com?subject=Application for ${j.title}" 
-                   class="btn apply-btn" ${j.status === 'Closed' ? 'style="pointer-events:none; background:#94a3b8;"' : ''}>
-                   ${j.status === 'Closed' ? 'Position Closed' : 'Apply Now'}
-                </a>
+                ${isClosed ? 
+                  `<span class="btn apply-btn btn-closed">Position Closed</span>` : 
+                  `<a href="mailto:hr@manlitics.com?subject=Application for ${j.title}" class="btn apply-btn">Apply Now</a>`
+                }
             </div>
-        </article>
-    `).join('');
+        </article>`;
+    }).join('');
 </script>
 </body>
 </html>
