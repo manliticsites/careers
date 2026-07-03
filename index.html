@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="css/style.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Open Roles — Careers</title>
-<meta name="description" content="Current openings. Read the full role brief and apply.">
+<meta name="description" content="Current openings at Manlitics B2B ITES. Read the full role brief and apply.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg-color: #f0f4f8;       /* Soft Light Gray-Blue background */
-    --card-bg: #ffffff;        /* Crisp White cards */
-    --text-main: #000000;      /* Pure Black text */
-    --accent-blue: #1e3a8a;    /* Deep Navy */
-    --accent-green: #065f46;   /* Deep Forest Green */
-    --highlight: #2563eb;      /* Bright Action Blue */
-    --shadow: 0 10px 20px rgba(0,0,0,0.08);
+    --bg-color: #f0f4f8;       /* Soft light gray-blue background */
+    --card-bg: #ffffff;        /* Crisp white cards */
+    --text-main: #142130;      /* Near-black navy for readability */
+    --text-soft: #4b5a72;
+    --accent-blue: #1e3a8a;    /* Deep navy */
+    --accent-green: #065f46;   /* Deep forest green */
+    --highlight: #2563eb;      /* Bright action blue */
+    --line: #dde4ee;
+    --shadow: 0 10px 24px rgba(20,33,48,0.08);
+    --shadow-hover: 0 18px 34px rgba(20,33,48,0.14);
   }
 
   * { box-sizing: border-box; }
-  
+
   html, body {
     margin: 0;
     padding: 0;
@@ -29,85 +31,202 @@
     background-color: var(--bg-color);
     color: var(--text-main);
     font-family: 'Inter', sans-serif;
-    overflow-x: hidden; /* Prevents horizontal scroll on mobile */
+    overflow-x: hidden;
+    scroll-behavior: smooth;
   }
 
   .wrap { max-width: 900px; margin: 0 auto; padding: 20px; }
 
-  /* Full-width Responsive Header */
+  /* ── Header ────────────────────────────────────────── */
   header.masthead {
     background: linear-gradient(135deg, var(--accent-blue), #1e293b);
-    color: white;
-    padding: 60px 20px;
+    color: #ffffff;
+    padding: 64px 20px 56px;
     text-align: center;
     width: 100%;
+    animation: fadeInDown 0.7s ease both;
+  }
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #cfe0ff;
+    margin-bottom: 14px;
+  }
+  h1.company-name {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: clamp(32px, 6vw, 56px);
+    line-height: 1.1;
+    margin: 0 0 10px;
+    letter-spacing: -0.01em;
+  }
+  header.masthead p.tagline {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: #d9e4fb;
+    margin: 0;
   }
 
-  /* Responsive Grid for Tickets */
+  /* ── Section intro ─────────────────────────────────── */
+  .board-intro {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 36px 0 16px;
+    border-bottom: 1px solid var(--line);
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .board-intro h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    margin: 0;
+    font-weight: 600;
+  }
+  .count-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--text-main);
+    background: var(--card-bg);
+    border: 1px solid var(--line);
+    padding: 4px 12px;
+    border-radius: 999px;
+  }
+
+  /* ── Job board / cards ─────────────────────────────── */
   .board {
     display: grid;
-    grid-template-columns: 1fr; /* Default mobile */
+    grid-template-columns: 1fr;
     gap: 20px;
-    margin-top: 40px;
+    margin-top: 28px;
+    padding-bottom: 80px;
   }
 
-/* Ensure the ticket splits space perfectly */
   .ticket {
     background: var(--card-bg);
     border-left: 6px solid var(--accent-green);
-    padding: 24px;
-    border-radius: 8px;
+    padding: 26px 28px;
+    border-radius: 10px;
     box-shadow: var(--shadow);
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 20px;
-    transition: all 0.4s ease;
+    opacity: 0;
+    transform: translateY(24px);
+    animation: fadeInUp 0.6s ease forwards;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+  .ticket:hover {
+    transform: translateY(-4px) scale(1.015);
+    box-shadow: var(--shadow-hover);
+    border-left-color: var(--highlight);
   }
 
-  /* This forces the action button to stay on the right side */
-  .ticket-action {
-    flex-shrink: 0; /* Prevents the button from shrinking */
+  .ticket-id {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--text-soft);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+  .ticket-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 23px;
+    margin: 0 0 10px;
+    line-height: 1.2;
+    color: var(--text-main);
+  }
+  .meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--text-soft);
+    margin-bottom: 12px;
+  }
+  .ticket-desc {
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--text-soft);
+    margin: 0;
+    max-width: 52ch;
   }
 
-  /* Responsive Fix: Stack on mobile */
-  @media (max-width: 600px) {
-    .ticket { 
-      flex-direction: column; 
-      text-align: center; 
-      gap: 20px; 
-    }
-    .ticket-action { width: 100%; }
-    .view-btn { display: block; width: 100%; }
-  }
-
-  .ticket:hover { transform: scale(1.02); box-shadow: 0 20px 30px rgba(0,0,0,0.15); }
-
-  /* Motion Animation */
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+  .ticket-action { flex-shrink: 0; }
 
   .view-btn {
     background: var(--highlight);
-    color: white;
-    padding: 12px 24px;
+    color: #ffffff;
+    padding: 12px 22px;
     border-radius: 50px;
     text-decoration: none;
     font-weight: 600;
-    transition: background 0.3s ease;
+    font-size: 14px;
+    display: inline-block;
+    white-space: nowrap;
+    transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+    box-shadow: 0 4px 12px rgba(37,99,235,0.25);
+  }
+  .view-btn:hover {
+    background: var(--accent-green);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(6,95,70,0.3);
+  }
+  .view-btn:focus-visible { outline: 3px solid var(--accent-blue); outline-offset: 2px; }
+
+  .empty-state {
+    padding: 60px 20px;
+    text-align: center;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--text-soft);
+    border: 1px dashed var(--line);
+    border-radius: 10px;
   }
 
-  .view-btn:hover { background: var(--accent-green); }
+  footer {
+    text-align: center;
+    padding: 36px 24px 60px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--text-soft);
+    border-top: 1px solid var(--line);
+  }
+  footer a { color: var(--highlight); }
 
-  /* Mobile Responsive Fixes */
+  /* ── Motion ────────────────────────────────────────── */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ticket, header.masthead { animation: none; opacity: 1; transform: none; }
+    .ticket:hover { transform: none; }
+  }
+
+  /* ── Mobile ────────────────────────────────────────── */
   @media (max-width: 600px) {
-    .ticket { flex-direction: column; text-align: center; gap: 15px; }
-    h1.company-name { font-size: 2rem !important; }
+    .ticket {
+      flex-direction: column;
+      text-align: center;
+      gap: 16px;
+    }
+    .ticket-action { width: 100%; }
+    .view-btn { display: block; width: 100%; }
+    h1.company-name { font-size: 2rem; }
   }
 </style>
-
 </head>
 
 <body>
@@ -124,38 +243,24 @@
     <span class="count-tag" id="job-count">0 roles</span>
   </div>
 
-<div class="board" id="job-board">
-  <!-- Jobs injected here -->
+  <div class="board" id="job-board">
+    <!-- Jobs injected here -->
+  </div>
 </div>
 
-<script>
-  // ... keep your existing 'jobs' array ...
+<footer>
+  Built for candidates arriving from LinkedIn. Questions? Email
+  <a href="mailto:careers@manlitics.com">careers@manlitics.com</a>
+</footer>
 
-  const board = document.getElementById('job-board');
-  board.innerHTML = jobs.map(job => `
-    <article class="ticket">
-      <div class="ticket-info">
-        <div class="ticket-id">${job.id} · Posted ${job.posted}</div>
-        <h3 class="ticket-title">${job.title}</h3>
-        <div class="meta-row">
-          <span>📍 ${job.location}</span>
-          <span>🕒 ${job.type}</span>
-        </div>
-        <p class="ticket-desc">${job.blurb}</p>
-      </div>
-      <div class="ticket-action">
-        <a class="view-btn" href="${job.pdf}" target="_blank" rel="noopener">View JD ↗</a>
-      </div>
-    </article>
-  `).join('');
-</script>
+<script>
   // ─────────────────────────────────────────────────────────
   // EDIT THIS LIST to add / remove job openings.
-  // 1. Put the job description PDF in the /jobs folder.
+  // 1. Put the job description file (PDF, Word, etc.) in /jobs.
   // 2. Add an entry below pointing to it.
-  // 3. Commit + push — the page updates automatically.
+  // 3. Commit — the page updates automatically.
   // ─────────────────────────────────────────────────────────
-const jobs = [
+  const jobs = [
     {
       id: "ENG-014",
       title: "Demand Generation Executive",
@@ -163,7 +268,7 @@ const jobs = [
       type: "Full-time",
       posted: "Jul 2026",
       blurb: "Own core services powering our platform. 5+ years experience, strong systems design background.",
-      pdf: "jobs/DGE-JD.pdf"
+      file: "jobs/DGE-JD.pdf"
     },
     {
       id: "RES-007",
@@ -172,7 +277,7 @@ const jobs = [
       type: "Full-time",
       posted: "Jul 2026",
       blurb: "Focus on Contact Discovery and Pass Verification.",
-      pdf: "jobs/Research-Analyst-JD.pdf"
+      file: "jobs/Research-Analyst-JD.pdf"
     },
     {
       id: "MKT-002",
@@ -181,11 +286,23 @@ const jobs = [
       type: "Full-time",
       posted: "Jul 2026",
       blurb: "Manage end-to-end campaign strategies and performance analytics for B2B growth.",
-      pdf: "jobs/Marketing-Specialist-JD.pdf"
-    },
-
+      file: "jobs/Marketing-Specialist-JD.pdf"
+    }
   ];
 
+  // Works out a friendly label from the file extension so PDFs,
+  // Word docs, or anything else all display sensibly.
+  function fileMeta(path) {
+    const ext = (path.split('.').pop() || '').toLowerCase();
+    const map = {
+      pdf:  "View JD",
+      doc:  "Download JD",
+      docx: "Download JD",
+      txt:  "View JD",
+      rtf:  "Download JD"
+    };
+    return map[ext] || "Download JD";
+  }
 
   const board = document.getElementById('job-board');
   const countTag = document.getElementById('job-count');
@@ -195,9 +312,9 @@ const jobs = [
     countTag.textContent = "0 roles";
   } else {
     countTag.textContent = jobs.length + (jobs.length === 1 ? " role" : " roles");
-    board.innerHTML = jobs.map(job => `
-      <article class="ticket">
-        <div class="ticket-main">
+    board.innerHTML = jobs.map((job, i) => `
+      <article class="ticket" style="animation-delay:${i * 0.1}s">
+        <div class="ticket-info">
           <div class="ticket-id">${job.id} · Posted ${job.posted}</div>
           <h3 class="ticket-title">${job.title}</h3>
           <div class="meta-row">
@@ -206,14 +323,13 @@ const jobs = [
           </div>
           <p class="ticket-desc">${job.blurb}</p>
         </div>
-        <div class="ticket-stub">
-          <span class="stamp">Open</span>
-          <a class="view-btn" href="${job.pdf}" target="_blank" rel="noopener">View JD ↗</a>
+        <div class="ticket-action">
+          <a class="view-btn" href="${job.file}" target="_blank" rel="noopener">${fileMeta(job.file)} ↗</a>
         </div>
       </article>
     `).join('');
   }
 </script>
-<script src="js/script.js"></script>
+
 </body>
 </html>
