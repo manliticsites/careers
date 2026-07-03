@@ -9,14 +9,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  .ticket {
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
-}
-
-.ticket:hover {
-    transform: translateY(-5px); /* Lifts the card up */
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); /* Deepens the shadow */
-}
   :root {
     --primary: #1e3a8a;    /* Deep Blue */
     --accent: #2563eb;     /* Bright Blue */
@@ -30,9 +22,10 @@
 
   * { box-sizing: border-box; }
   
+  /* Background Color Applied Here */
   body {
     margin: 0;
-    background-color: #f8fafc; /* This is your background color */
+    background-color: var(--bg); 
     color: var(--ink);
     font-family: 'Inter', sans-serif;
   }
@@ -41,15 +34,33 @@
     padding: 64px 24px 40px;
     text-align: center;
     border-bottom: 3px double var(--primary);
-    background-color: var(--primary); /* Blue Header */
+    background-color: var(--primary);
     color: #ffffff;
   }
 
-  header.masthead p.tagline {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    color: #cbd5e1; /* Light gray for readability on blue */
-    margin: 0;
+  /* Ticket Motion Effects */
+  .ticket {
+    background: var(--paper-raised);
+    border: 1px solid var(--ink);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .ticket:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Board Entrance Motion */
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .board {
+    display: grid;
+    gap: 22px;
+    padding: 32px 0 80px;
+    animation: slideIn 0.6s ease-out forwards;
   }
 
   .view-btn {
@@ -58,20 +69,17 @@
     font-weight: 500;
     text-decoration: none;
     color: #ffffff;
-    background: var(--accent); /* Now uses Bright Blue */
+    background: var(--accent);
     padding: 10px 14px;
     border-radius: 4px;
-    transition: background 0.15s ease;
+    transition: background 0.15s ease, transform 0.1s ease;
     display: inline-block;
   }
 
-  .view-btn:hover { background: var(--primary); }
-
-  /* Keep your other existing styles below this... */
-  .wrap { max-width: 920px; margin: 0 auto; padding: 0 24px; }
-  .board { display: grid; gap: 22px; padding: 32px 0 80px; }
-  .ticket { background: var(--paper-raised); border: 1px solid var(--ink); padding: 20px; }
-  .stamp { color: var(--stamp); border: 1.5px solid var(--stamp); padding: 3px 9px; border-radius: 999px; }
+  .view-btn:hover { 
+    background: var(--primary); 
+    transform: scale(1.05); 
+  }
 </style>
 
 </head>
