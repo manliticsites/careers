@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open Roles — Careers</title>
+<meta name="description" content="Current openings. Read the full role brief and apply.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#12211E;
+    --paper:#F2F1E9;
+    --paper-raised:#FFFFFF;
+    --line:#12211E22;
+    --brick:#B5533C;
+    --brick-dark:#8F3F2C;
+    --gold:#C98A2C;
+    --stamp:#2E5C4E;
+    --shadow: 0 1px 0 rgba(18,33,30,0.06);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(18,33,30,0.05) 1px, transparent 0);
+    background-size: 22px 22px;
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px;}
+
+  header.masthead{
+    padding:64px 24px 40px;
+    text-align:center;
+    border-bottom:3px double var(--ink);
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--stamp);
+    margin-bottom:14px;
+  }
+  h1.company-name{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:clamp(40px, 7vw, 68px);
+    line-height:1;
+    margin:0 0 10px;
+    letter-spacing:-0.01em;
+  }
+  header.masthead p.tagline{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:18px;
+    color:#12211Ecc;
+    margin:0;
+  }
+
+  .board-intro{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    padding:36px 0 20px;
+    border-bottom:1px solid var(--line);
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  .board-intro h2{
+    font-family:'Fraunces', serif;
+    font-size:22px;
+    margin:0;
+    font-weight:600;
+  }
+  .count-tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--ink);
+    background:var(--paper-raised);
+    border:1px solid var(--ink);
+    padding:4px 10px;
+    border-radius:999px;
+  }
+
+  .board{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:22px;
+    padding:32px 0 80px;
+  }
+
+  .ticket{
+    position:relative;
+    display:grid;
+    grid-template-columns:1fr 152px;
+    background:var(--paper-raised);
+    border:1px solid var(--ink);
+    box-shadow:var(--shadow);
+  }
+  .ticket::before{
+    content:"";
+    position:absolute;
+    top:0; bottom:0;
+    right:152px;
+    width:0;
+    border-left:2px dashed var(--ink)55;
+  }
+  .ticket-main{
+    padding:26px 28px;
+  }
+  .ticket-id{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.08em;
+    color:var(--ink)99;
+    margin-bottom:10px;
+    text-transform:uppercase;
+  }
+  .ticket-title{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:26px;
+    margin:0 0 12px;
+    line-height:1.15;
+  }
+  .meta-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px 18px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--ink)cc;
+    margin-bottom:14px;
+  }
+  .meta-row span{display:inline-flex;align-items:center;gap:6px;}
+  .ticket-desc{
+    font-size:14.5px;
+    line-height:1.55;
+    color:var(--ink)e6;
+    margin:0;
+    max-width:52ch;
+  }
+  .ticket-stub{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding:20px 14px;
+    text-align:center;
+    background:
+      repeating-linear-gradient(135deg, transparent, transparent 8px, #12211E08 8px, #12211E08 9px);
+  }
+  .stamp{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    letter-spacing:0.12em;
+    color:var(--stamp);
+    border:1.5px solid var(--stamp);
+    border-radius:999px;
+    padding:3px 9px;
+    text-transform:uppercase;
+    transform:rotate(-6deg);
+  }
+  .view-btn{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    font-weight:500;
+    text-decoration:none;
+    color:var(--paper-raised);
+    background:var(--brick);
+    padding:10px 14px;
+    border-radius:4px;
+    transition:background 0.15s ease, transform 0.15s ease;
+    display:inline-block;
+  }
+  .view-btn:hover{background:var(--brick-dark); transform:translateY(-1px);}
+  .view-btn:focus-visible{outline:3px solid var(--gold); outline-offset:2px;}
+
+  footer{
+    text-align:center;
+    padding:40px 24px 64px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--ink)99;
+    border-top:1px solid var(--line);
+  }
+  footer a{color:var(--stamp);}
+
+  .empty-state{
+    padding:60px 20px;
+    text-align:center;
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    color:var(--ink)99;
+    border:1px dashed var(--ink)55;
+  }
+
+  @media (max-width:560px){
+    .ticket{grid-template-columns:1fr;}
+    .ticket::before{display:none;}
+    .ticket-stub{
+      flex-direction:row;
+      border-top:1px dashed var(--ink)55;
+      padding:16px 20px;
+      justify-content:space-between;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="eyebrow">Now Hiring</div>
+  <h1 class="company-name">Your Company Name</h1>
+  <p class="tagline">Read the brief, then apply — no account needed.</p>
+</header>
+
+<div class="wrap">
+  <div class="board-intro">
+    <h2>Open Positions</h2>
+    <span class="count-tag" id="job-count">0 roles</span>
+  </div>
+
+  <div class="board" id="job-board">
+    <!-- Job tickets are injected by script below -->
+  </div>
+</div>
+
+<footer>
+  Built for candidates arriving from LinkedIn. Questions? Email
+  <a href="mailto:careers@yourcompany.com">careers@yourcompany.com</a>
+</footer>
+
+<script>
+  // ─────────────────────────────────────────────────────────
+  // EDIT THIS LIST to add / remove job openings.
+  // 1. Put the job description PDF in the /jobs folder.
+  // 2. Add an entry below pointing to it.
+  // 3. Commit + push — the page updates automatically.
+  // ─────────────────────────────────────────────────────────
+  const jobs = [
+    {
+      id: "ENG-014",
+      title: "Senior Backend Engineer",
+      location: "Remote (India)",
+      type: "Full-time",
+      posted: "Jul 2026",
+      blurb: "Own core services powering our platform. 5+ years experience, strong systems design background.",
+      pdf: "jobs/senior-backend-engineer.pdf"
+    },
+    {
+      id: "DES-007",
+      title: "Product Designer",
+      location: "Pune, IN (Hybrid)",
+      type: "Full-time",
+      posted: "Jul 2026",
+      blurb: "Shape end-to-end product experiences alongside engineering and research. Portfolio required.",
+      pdf: "jobs/product-designer.pdf"
+    }
+  ];
+
+  const board = document.getElementById('job-board');
+  const countTag = document.getElementById('job-count');
+
+  if (jobs.length === 0) {
+    board.innerHTML = `<div class="empty-state">No open roles right now — check back soon.</div>`;
+    countTag.textContent = "0 roles";
+  } else {
+    countTag.textContent = jobs.length + (jobs.length === 1 ? " role" : " roles");
+    board.innerHTML = jobs.map(job => `
+      <article class="ticket">
+        <div class="ticket-main">
+          <div class="ticket-id">${job.id} · Posted ${job.posted}</div>
+          <h3 class="ticket-title">${job.title}</h3>
+          <div class="meta-row">
+            <span>📍 ${job.location}</span>
+            <span>🕒 ${job.type}</span>
+          </div>
+          <p class="ticket-desc">${job.blurb}</p>
+        </div>
+        <div class="ticket-stub">
+          <span class="stamp">Open</span>
+          <a class="view-btn" href="${job.pdf}" target="_blank" rel="noopener">View JD ↗</a>
+        </div>
+      </article>
+    `).join('');
+  }
+</script>
+
+</body>
+</html>
