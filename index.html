@@ -107,17 +107,31 @@
     <span class="count-tag" id="job-count">0 roles</span>
   </div>
 
-  <div class="board" id="job-board">
-    <!-- Job tickets are injected by script below -->
-  </div>
+<div class="board" id="job-board">
+  <!-- Jobs injected here -->
 </div>
 
-<footer>
-  Built for candidates arriving from LinkedIn. Questions? Email
-  <a href="mailto:hr@manlitics.com.com">www.manlitics.com</a>
-</footer>
-
 <script>
+  // ... keep your existing 'jobs' array ...
+
+  const board = document.getElementById('job-board');
+  board.innerHTML = jobs.map(job => `
+    <article class="ticket">
+      <div class="ticket-info">
+        <div class="ticket-id">${job.id} · Posted ${job.posted}</div>
+        <h3 class="ticket-title">${job.title}</h3>
+        <div class="meta-row">
+          <span>📍 ${job.location}</span>
+          <span>🕒 ${job.type}</span>
+        </div>
+        <p class="ticket-desc">${job.blurb}</p>
+      </div>
+      <div class="ticket-action">
+        <a class="view-btn" href="${job.pdf}" target="_blank" rel="noopener">View JD ↗</a>
+      </div>
+    </article>
+  `).join('');
+</script>
   // ─────────────────────────────────────────────────────────
   // EDIT THIS LIST to add / remove job openings.
   // 1. Put the job description PDF in the /jobs folder.
