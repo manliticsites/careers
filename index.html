@@ -21,31 +21,39 @@
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    background:var(--paper);
-    background-image:
-      radial-gradient(circle at 1px 1px, rgba(18,33,30,0.05) 1px, transparent 0);
+body {
+    margin: 0;
+    /* Use a solid color for a cleaner look */
+    background-color: #f8fafc; 
+    
+    /* OR, if you want to keep the dotted texture, 
+       just change the radial-gradient color to a darker shade */
+    background-image: radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.1) 1px, transparent 0);
     background-size: 22px 22px;
-    color:var(--ink);
-    font-family:'Inter', sans-serif;
-    -webkit-font-smoothing:antialiased;
-  }
+    
+    color: var(--ink); /* This will now be your Black text */
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
   .wrap{max-width:920px;margin:0 auto;padding:0 24px;}
 
-  header.masthead{
-    padding:64px 24px 40px;
-    text-align:center;
-    border-bottom:3px double var(--ink);
-  }
-  .eyebrow{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:12px;
-    letter-spacing:0.18em;
-    text-transform:uppercase;
-    color:var(--stamp);
-    margin-bottom:14px;
-  }
+header.masthead {
+    padding: 64px 24px 40px;
+    text-align: center;
+    border-bottom: 3px double var(--primary); /* Deep Blue border */
+    background-color: var(--primary);        /* Deep Blue background */
+    color: #ffffff;                          /* White text for contrast */
+}
+
+/* Ensure the tagline is also visible */
+header.masthead p.tagline {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 18px;
+    color: #cbd5e1; /* Light gray for readability */
+    margin: 0;
+}
   h1.company-name{
     font-family:'Fraunces', serif;
     font-weight:700;
