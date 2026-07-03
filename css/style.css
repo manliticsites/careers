@@ -9,3 +9,8 @@
 
     --shadow:0 10px 30px rgba(15,111,255,.12);
 }
+body{
+    font-family:'Manrope',sans-serif;
+    background:var(--light);
+    color:var(--dark);
+}
