@@ -19,3 +19,57 @@ header{
     border-bottom:1px solid var(--border);
     box-shadow:0 2px 10px rgba(0,0,0,.05);
 }
+.hero{
+    background:linear-gradient(135deg,#F8FAFC,#EAF5FF);
+    padding:90px 0;
+}
+.btn{
+    background:var(--primary);
+    color:white;
+    padding:14px 28px;
+    border-radius:10px;
+    font-weight:600;
+}
+
+.btn:hover{
+    background:#005EEB;
+}
+.job-card{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+
+    border:1px solid #E5E7EB;
+
+    transition:.3s;
+
+}
+
+.job-card:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.12);
+
+}
+footer{
+
+    background:#0F172A;
+
+    color:white;
+
+    padding:40px;
+
+}
+
+footer a{
+
+    color:#14C8B8;
+
+}
+
