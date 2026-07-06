@@ -9,27 +9,24 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --brand:       #1a56db;
-    --brand-dark:  #1040b0;
-    --brand-light: #eff4ff;
-    --green:       #0d7a3e;
-    --green-light: #e8f8ef;
-    --ink:         #0f1c2e;
-    --ink-mid:     #3d5166;
-    --ink-soft:    #6b7f93;
-    --bg:          #f0f4f9;
-    --card:        #ffffff;
-    --line:        #dde4ef;
-    --shadow-sm:   0 1px 4px rgba(15,28,46,0.07);
-    --shadow-md:   0 8px 28px rgba(15,28,46,0.11);
-    --shadow-lg:   0 20px 48px rgba(15,28,46,0.15);
-    --radius:      12px;
+    --blue:        #1d4ed8;
+    --blue-dark:   #1e3a8a;
+    --blue-light:  #eff6ff;
+    --blue-mid:    #2563eb;
+    --black:       #0f172a;
+    --ink:         #1e293b;
+    --ink-mid:     #475569;
+    --ink-soft:    #94a3b8;
+    --white:       #ffffff;
+    --bg:          #f8fafc;
+    --line:        #e2e8f0;
+    --shadow-sm:   0 1px 3px rgba(15,23,42,0.07);
+    --shadow-md:   0 6px 24px rgba(15,23,42,0.10);
+    --radius:      10px;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
-
   body {
     font-family: 'Plus Jakarta Sans', sans-serif;
     background: var(--bg);
@@ -41,330 +38,305 @@
   /* ── NAV ─────────────────────────────────────────────── */
   nav {
     position: sticky; top: 0; z-index: 100;
-    background: rgba(255,255,255,0.95);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--line);
-    padding: 0 28px;
+    background: var(--white);
+    border-bottom: 2px solid var(--blue);
+    padding: 0 32px;
+    box-shadow: var(--shadow-sm);
   }
   .nav-inner {
-    max-width: 960px; margin: 0 auto;
+    max-width: 980px; margin: 0 auto;
     display: flex; align-items: center; justify-content: space-between;
-    height: 62px;
+    height: 64px;
   }
   .logo {
     display: flex; align-items: center; gap: 10px;
-    font-weight: 800; font-size: 18px; color: var(--ink);
-    text-decoration: none; letter-spacing: -0.02em;
+    font-weight: 800; font-size: 18px;
+    color: var(--black); text-decoration: none;
+    letter-spacing: -0.02em;
   }
-  .logo-dot {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: var(--brand); display: inline-block;
+  .logo-bar {
+    width: 4px; height: 22px; border-radius: 2px;
+    background: var(--blue);
   }
-  .nav-pill {
-    background: var(--brand-light);
-    color: var(--brand);
-    font-weight: 600; font-size: 13px;
-    padding: 7px 16px; border-radius: 999px;
+  .nav-cta {
+    background: var(--blue);
+    color: var(--white);
+    font-weight: 700; font-size: 13px;
+    padding: 9px 20px; border-radius: 6px;
     text-decoration: none;
-    transition: background 0.2s;
+    transition: background 0.2s, transform 0.15s;
+    letter-spacing: 0.01em;
   }
-  .nav-pill:hover { background: #dce8ff; }
+  .nav-cta:hover { background: var(--blue-dark); transform: translateY(-1px); }
 
   /* ── HERO ────────────────────────────────────────────── */
   header.hero {
-    background: linear-gradient(135deg, #0f1c2e 0%, #1a3a6b 60%, #1a56db 100%);
-    padding: 80px 28px 90px;
+    background: var(--black);
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 60%, #1d4ed8 100%);
+    padding: 76px 32px 86px;
     text-align: center;
     position: relative;
     overflow: hidden;
-    animation: heroIn 0.7s ease both;
+    animation: heroIn 0.65s ease both;
   }
-  header.hero::before {
+  header.hero::after {
     content: '';
     position: absolute; inset: 0;
     background:
-      radial-gradient(ellipse 60% 50% at 20% 80%, rgba(26,86,219,0.25) 0%, transparent 70%),
-      radial-gradient(ellipse 50% 40% at 80% 20%, rgba(13,122,62,0.2) 0%, transparent 70%);
+      radial-gradient(ellipse 55% 60% at 15% 90%, rgba(29,78,216,0.4) 0%, transparent 65%),
+      radial-gradient(ellipse 45% 45% at 85% 10%, rgba(255,255,255,0.05) 0%, transparent 60%);
     pointer-events: none;
   }
+  .hero-inner { position: relative; z-index: 1; }
   .hero-badge {
-    display: inline-flex; align-items: center; gap: 7px;
-    background: rgba(255,255,255,0.12);
-    border: 1px solid rgba(255,255,255,0.2);
-    color: #c8daff;
-    font-size: 12.5px; font-weight: 600;
-    padding: 6px 16px; border-radius: 999px;
-    margin-bottom: 24px;
-    animation: fadeInUp 0.6s ease 0.1s both;
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.18);
+    color: #bfdbfe;
+    font-size: 12px; font-weight: 700;
+    padding: 6px 18px; border-radius: 999px;
+    margin-bottom: 26px; letter-spacing: 0.08em;
+    text-transform: uppercase;
+    animation: fadeUp 0.6s ease 0.1s both;
   }
-  .hero-badge span { width: 7px; height: 7px; border-radius: 50%; background: #4ade80; display: inline-block; animation: pulse 2s infinite; }
+  .hero-dot { width: 7px; height: 7px; border-radius: 50%; background: #4ade80; animation: pulse 2s infinite; }
   header.hero h1 {
-    font-size: clamp(32px, 5vw, 52px);
-    font-weight: 800;
-    color: #ffffff;
-    letter-spacing: -0.03em;
-    line-height: 1.1;
-    margin-bottom: 16px;
-    animation: fadeInUp 0.6s ease 0.2s both;
+    font-size: clamp(30px, 5vw, 54px);
+    font-weight: 800; color: var(--white);
+    letter-spacing: -0.03em; line-height: 1.08;
+    margin-bottom: 18px;
+    animation: fadeUp 0.6s ease 0.2s both;
   }
-  header.hero h1 em { font-style: normal; color: #7eb3ff; }
+  header.hero h1 span { color: #93c5fd; }
   header.hero p {
-    font-size: 17px;
-    color: #9bb8e8;
-    font-weight: 400;
-    max-width: 480px;
-    margin: 0 auto;
-    line-height: 1.6;
-    animation: fadeInUp 0.6s ease 0.3s both;
+    font-size: 17px; color: #93c5fd;
+    max-width: 460px; margin: 0 auto;
+    line-height: 1.65; font-weight: 400;
+    animation: fadeUp 0.6s ease 0.3s both;
   }
 
-  /* ── STATS STRIP ─────────────────────────────────────── */
-  .stats-strip {
-    background: var(--card);
+  /* ── CONTACT STRIP (horizontal below hero) ───────────── */
+  .contact-strip {
+    background: var(--white);
+    border-top: 2px solid var(--blue);
     border-bottom: 1px solid var(--line);
-    padding: 0 28px;
-    box-shadow: var(--shadow-sm);
-    animation: fadeInUp 0.5s ease 0.4s both;
+    box-shadow: 0 -2px 16px rgba(15,23,42,0.05);
+    animation: fadeUp 0.5s ease 0.5s both;
     opacity: 0;
   }
+  .contact-strip-inner {
+    max-width: 980px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    divide-x: 1px solid var(--line);
+  }
+  .cs-item {
+    display: flex; align-items: center; gap: 14px;
+    padding: 22px 28px;
+    border-right: 1px solid var(--line);
+    transition: background 0.2s;
+  }
+  .cs-item:last-child { border-right: none; }
+  .cs-item:hover { background: var(--blue-light); }
+  .cs-icon {
+    width: 42px; height: 42px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+  .cs-icon-blue  { background: var(--blue-light); }
+  .cs-icon-green { background: #f0fdf4; }
+  .cs-icon-black { background: #f1f5f9; }
+  .cs-icon-map   { background: #fdf4ff; }
+  .cs-text { min-width: 0; }
+  .cs-label {
+    font-size: 10.5px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--ink-soft); margin-bottom: 3px;
+  }
+  .cs-value {
+    font-size: 14px; font-weight: 600;
+    color: var(--ink);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .cs-value a {
+    color: var(--blue); text-decoration: none;
+    font-weight: 600; transition: color 0.2s;
+  }
+  .cs-value a:hover { color: var(--blue-dark); text-decoration: underline; }
+  .cs-sub {
+    font-size: 11.5px; color: var(--ink-soft); margin-top: 2px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+
+  /* ── STATS ROW ───────────────────────────────────────── */
+  .stats-row {
+    background: var(--black);
+    padding: 0 32px;
+  }
   .stats-inner {
-    max-width: 960px; margin: 0 auto;
+    max-width: 980px; margin: 0 auto;
     display: flex; align-items: stretch;
-    gap: 0;
   }
   .stat {
     flex: 1; display: flex; flex-direction: column;
     align-items: center; justify-content: center;
-    padding: 20px 16px;
-    border-right: 1px solid var(--line);
+    padding: 18px 16px;
+    border-right: 1px solid rgba(255,255,255,0.08);
   }
   .stat:last-child { border-right: none; }
-  .stat-num { font-size: 22px; font-weight: 800; color: var(--brand); letter-spacing: -0.03em; }
-  .stat-label { font-size: 12px; color: var(--ink-soft); font-weight: 500; margin-top: 2px; }
+  .stat-num { font-size: 20px; font-weight: 800; color: #93c5fd; letter-spacing: -0.02em; }
+  .stat-label { font-size: 11px; color: rgba(255,255,255,0.45); font-weight: 500; margin-top: 3px; text-transform: uppercase; letter-spacing: 0.06em; }
 
-  /* ── MAIN LAYOUT ─────────────────────────────────────── */
+  /* ── MAIN ────────────────────────────────────────────── */
   .page {
-    max-width: 960px; margin: 0 auto;
-    padding: 40px 28px 80px;
-    display: grid;
-    grid-template-columns: 1fr 300px;
-    gap: 28px;
-    align-items: start;
+    max-width: 980px; margin: 0 auto;
+    padding: 44px 32px 80px;
   }
-
-  /* ── SECTION HEADER ──────────────────────────────────── */
   .section-head {
     display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 20px;
+    margin-bottom: 22px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--line);
   }
   .section-head h2 {
-    font-size: 20px; font-weight: 700; color: var(--ink);
-    letter-spacing: -0.02em;
+    font-size: 20px; font-weight: 800;
+    color: var(--black); letter-spacing: -0.02em;
   }
   .role-count {
-    background: var(--brand-light);
-    color: var(--brand);
-    font-size: 12.5px; font-weight: 700;
-    padding: 4px 12px; border-radius: 999px;
+    background: var(--blue); color: var(--white);
+    font-size: 12px; font-weight: 700;
+    padding: 5px 14px; border-radius: 999px;
+    letter-spacing: 0.02em;
   }
 
   /* ── JOB CARDS ───────────────────────────────────────── */
   .board { display: flex; flex-direction: column; gap: 16px; }
 
   .ticket {
-    background: var(--card);
+    background: var(--white);
     border: 1px solid var(--line);
     border-radius: var(--radius);
-    padding: 28px;
+    padding: 28px 30px;
     box-shadow: var(--shadow-sm);
     opacity: 0;
-    transform: translateY(18px);
-    animation: fadeInUp 0.55s ease forwards;
-    transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
-    position: relative;
-    overflow: hidden;
+    transform: translateY(16px);
+    animation: fadeUp 0.5s ease forwards;
+    transition: box-shadow 0.25s, border-color 0.25s, transform 0.25s;
+    position: relative; overflow: hidden;
   }
-  .ticket::before {
+  .ticket::after {
     content: '';
-    position: absolute; left: 0; top: 0; bottom: 0;
-    width: 4px;
-    background: var(--brand);
-    transform: scaleY(0);
-    transform-origin: bottom;
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--blue);
+    transform: scaleX(0);
+    transform-origin: left;
     transition: transform 0.3s ease;
-    border-radius: 4px 0 0 4px;
   }
-  .ticket:hover {
-    box-shadow: var(--shadow-md);
-    border-color: #b8cef8;
-    transform: translateY(-3px);
-  }
-  .ticket:hover::before { transform: scaleY(1); }
+  .ticket:hover { box-shadow: var(--shadow-md); border-color: #bfdbfe; transform: translateY(-3px); }
+  .ticket:hover::after { transform: scaleX(1); }
 
   .ticket-top {
-    display: flex; align-items: flex-start;
-    justify-content: space-between; gap: 16px;
-    margin-bottom: 14px;
+    display: flex; align-items: center;
+    justify-content: space-between; gap: 12px;
+    margin-bottom: 12px; flex-wrap: wrap;
   }
-  .ticket-meta-top { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .badges { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
   .badge {
-    font-size: 11.5px; font-weight: 600; padding: 3px 10px;
-    border-radius: 999px; white-space: nowrap;
+    font-size: 11px; font-weight: 700; padding: 3px 11px;
+    border-radius: 999px; white-space: nowrap; letter-spacing: 0.03em;
   }
-  .badge-type { background: var(--brand-light); color: var(--brand); }
-  .badge-open { background: var(--green-light); color: var(--green); }
-  .posted-label { font-size: 12px; color: var(--ink-soft); }
+  .badge-open  { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+  .badge-type  { background: var(--blue-light); color: var(--blue); border: 1px solid #bfdbfe; }
+  .posted-lbl  { font-size: 12px; color: var(--ink-soft); }
 
   .ticket-title {
-    font-size: 20px; font-weight: 700;
-    color: var(--ink); letter-spacing: -0.02em;
+    font-size: 21px; font-weight: 800;
+    color: var(--black); letter-spacing: -0.02em;
     margin-bottom: 10px; line-height: 1.2;
     text-decoration: none; display: block;
     transition: color 0.2s;
   }
-  .ticket-title:hover { color: var(--brand); }
+  .ticket-title:hover { color: var(--blue); }
 
   .meta-row {
-    display: flex; flex-wrap: wrap; gap: 6px 18px;
+    display: flex; flex-wrap: wrap; gap: 5px 18px;
     font-size: 13.5px; color: var(--ink-mid);
-    margin-bottom: 14px;
+    margin-bottom: 14px; font-weight: 500;
   }
-  .meta-row span { display: flex; align-items: center; gap: 5px; }
-
   .ticket-desc {
-    font-size: 14.5px; line-height: 1.6;
-    color: var(--ink-soft); margin-bottom: 22px;
+    font-size: 14.5px; line-height: 1.62;
+    color: var(--ink-mid); margin-bottom: 24px;
   }
 
   .ticket-actions { display: flex; gap: 10px; flex-wrap: wrap; }
 
-  .btn-primary {
-    background: var(--brand);
-    color: #fff;
-    padding: 10px 20px; border-radius: 8px;
-    text-decoration: none; font-weight: 600;
-    font-size: 14px; display: inline-flex;
-    align-items: center; gap: 6px;
+  .btn-blue {
+    background: var(--blue); color: var(--white);
+    padding: 11px 22px; border-radius: 7px;
+    text-decoration: none; font-weight: 700; font-size: 14px;
+    display: inline-flex; align-items: center; gap: 6px;
+    box-shadow: 0 2px 8px rgba(29,78,216,0.25);
     transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 2px 8px rgba(26,86,219,0.25);
   }
-  .btn-primary:hover {
-    background: var(--brand-dark);
-    transform: translateY(-1px);
-    box-shadow: 0 6px 16px rgba(26,86,219,0.3);
-  }
+  .btn-blue:hover { background: var(--blue-dark); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(29,78,216,0.3); }
 
-  .btn-secondary {
-    background: var(--green-light);
-    color: var(--green);
-    padding: 10px 20px; border-radius: 8px;
-    text-decoration: none; font-weight: 600;
-    font-size: 14px; display: inline-flex;
-    align-items: center; gap: 6px;
+  .btn-white {
+    background: var(--white); color: var(--blue);
+    border: 1.5px solid var(--blue);
+    padding: 11px 22px; border-radius: 7px;
+    text-decoration: none; font-weight: 700; font-size: 14px;
+    display: inline-flex; align-items: center; gap: 6px;
     transition: background 0.2s, transform 0.2s;
   }
-  .btn-secondary:hover { background: #d1f0de; transform: translateY(-1px); }
+  .btn-white:hover { background: var(--blue-light); transform: translateY(-2px); }
 
-  .btn-outline {
-    background: transparent;
-    border: 1.5px solid var(--line);
-    color: var(--ink-mid);
-    padding: 10px 18px; border-radius: 8px;
-    text-decoration: none; font-weight: 600;
-    font-size: 14px; display: inline-flex;
-    align-items: center; gap: 6px;
-    transition: border-color 0.2s, color 0.2s, transform 0.2s;
+  .btn-black {
+    background: var(--black); color: var(--white);
+    padding: 11px 22px; border-radius: 7px;
+    text-decoration: none; font-weight: 700; font-size: 14px;
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: background 0.2s, transform 0.2s;
   }
-  .btn-outline:hover { border-color: var(--brand); color: var(--brand); transform: translateY(-1px); }
-
-  /* ── SIDEBAR ─────────────────────────────────────────── */
-  .sidebar { display: flex; flex-direction: column; gap: 20px; }
-
-  .side-card {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 24px;
-    box-shadow: var(--shadow-sm);
-    opacity: 0;
-    animation: fadeInUp 0.55s ease 0.3s forwards;
-  }
-  .side-card h3 {
-    font-size: 14px; font-weight: 700;
-    color: var(--ink); margin-bottom: 16px;
-    text-transform: uppercase; letter-spacing: 0.06em;
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--line);
-  }
-
-  /* Contact card */
-  .contact-list { display: flex; flex-direction: column; gap: 14px; }
-  .contact-row {
-    display: flex; gap: 12px; align-items: flex-start;
-  }
-  .contact-icon {
-    width: 36px; height: 36px; border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 16px; flex-shrink: 0;
-  }
-  .ci-email { background: var(--brand-light); }
-  .ci-wa { background: #e6f9ee; }
-  .ci-phone { background: #fff3e6; }
-  .ci-map { background: #f3eeff; }
-  .contact-detail { font-size: 13.5px; }
-  .contact-detail strong { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-soft); margin-bottom: 3px; }
-  .contact-detail a { color: var(--ink); font-weight: 600; text-decoration: none; transition: color 0.2s; }
-  .contact-detail a:hover { color: var(--brand); }
-  .contact-detail span { color: var(--ink-mid); font-weight: 500; }
-
-  /* Address card */
-  .address-block { font-size: 13.5px; color: var(--ink-mid); line-height: 1.7; }
-  .address-block strong { color: var(--ink); display: block; margin-bottom: 4px; font-size: 14px; }
-  .map-link {
-    display: inline-flex; align-items: center; gap: 5px;
-    margin-top: 12px;
-    font-size: 13px; font-weight: 600;
-    color: var(--brand); text-decoration: none;
-  }
-  .map-link:hover { text-decoration: underline; }
+  .btn-black:hover { background: #1e293b; transform: translateY(-2px); }
 
   /* ── FOOTER ──────────────────────────────────────────── */
   footer {
-    background: var(--ink);
-    color: #8da0b5;
-    text-align: center;
-    padding: 28px 24px;
-    font-size: 13px;
+    background: var(--black);
+    color: rgba(255,255,255,0.45);
+    text-align: center; padding: 30px 24px;
+    font-size: 13px; line-height: 1.8;
   }
-  footer a { color: #7eb3ff; text-decoration: none; }
+  footer strong { color: var(--white); }
+  footer a { color: #93c5fd; text-decoration: none; }
   footer a:hover { text-decoration: underline; }
-  footer strong { color: #fff; }
 
   /* ── ANIMATIONS ──────────────────────────────────────── */
-  @keyframes heroIn {
-    from { opacity: 0; transform: translateY(-8px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(18px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50%       { opacity: 0.6; transform: scale(0.85); }
-  }
+  @keyframes heroIn { from { opacity:0; transform:translateY(-10px); } to { opacity:1; transform:translateY(0); } }
+  @keyframes fadeUp  { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
+  @keyframes pulse   { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.6;transform:scale(0.85);} }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; opacity: 1 !important; transform: none !important; }
   }
 
   /* ── RESPONSIVE ──────────────────────────────────────── */
-  @media (max-width: 760px) {
-    .page { grid-template-columns: 1fr; padding: 28px 16px 60px; }
-    .sidebar { order: -1; }
-    .stats-inner { gap: 0; }
-    .stat { padding: 16px 8px; }
-    .ticket { padding: 22px 18px; }
-    header.hero { padding: 56px 20px 64px; }
+  @media (max-width: 820px) {
+    .contact-strip-inner { grid-template-columns: 1fr 1fr; }
+    .cs-item:nth-child(2) { border-right: none; }
+    .cs-item:nth-child(3) { border-top: 1px solid var(--line); }
+    .cs-item:nth-child(4) { border-top: 1px solid var(--line); border-right: none; }
+  }
+  @media (max-width: 520px) {
+    .contact-strip-inner { grid-template-columns: 1fr; }
+    .cs-item { border-right: none !important; border-top: 1px solid var(--line); }
+    .cs-item:first-child { border-top: none; }
+    .ticket { padding: 20px 18px; }
+    .ticket-actions { flex-direction: column; }
+    .btn-blue, .btn-white, .btn-black { justify-content: center; }
+    header.hero { padding: 52px 20px 64px; }
+    .page { padding: 28px 16px 60px; }
+    .stats-inner { flex-wrap: wrap; }
+    .stat { min-width: 50%; border-top: 1px solid rgba(255,255,255,0.08); }
   }
 </style>
 </head>
@@ -373,113 +345,97 @@
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a class="logo" href="#"><span class="logo-dot"></span> Manlitics B2B ITES</a>
-    <a class="nav-pill" href="mailto:hr@manlitics.com">📧 Contact HR</a>
+    <a class="logo" href="#"><span class="logo-bar"></span>Manlitics B2B ITES</a>
+    <a class="nav-cta" href="mailto:hr@manlitics.com">📧 Contact HR</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <header class="hero">
-  <div class="hero-badge"><span></span> We're Hiring</div>
-  <h1>Build your career at<br><em>Manlitics B2B ITES</em></h1>
-  <p>Join a fast-growing B2B lead generation company based in Pune. Real work. Real growth.</p>
+  <div class="hero-inner">
+    <div class="hero-badge"><span class="hero-dot"></span>We're Hiring</div>
+    <h1>Build your career at<br><span>Manlitics B2B ITES</span></h1>
+    <p>Join a fast-growing B2B lead generation company based in Pune. Real work. Real growth.</p>
+  </div>
 </header>
 
-<!-- STATS STRIP -->
-<div class="stats-strip">
+<!-- STATS ROW -->
+<div class="stats-row">
   <div class="stats-inner">
-    <div class="stat">
-      <span class="stat-num" id="stat-roles">3</span>
-      <span class="stat-label">Open Roles</span>
-    </div>
-    <div class="stat">
-      <span class="stat-num">Pune</span>
-      <span class="stat-label">Based in India</span>
-    </div>
-    <div class="stat">
-      <span class="stat-num">B2B</span>
-      <span class="stat-label">Industry Focus</span>
-    </div>
-    <div class="stat">
-      <span class="stat-num">Fast</span>
-      <span class="stat-label">Growing Team</span>
-    </div>
+    <div class="stat"><span class="stat-num" id="stat-roles">3</span><span class="stat-label">Open Roles</span></div>
+    <div class="stat"><span class="stat-num">Pune</span><span class="stat-label">Location</span></div>
+    <div class="stat"><span class="stat-num">B2B</span><span class="stat-label">Industry</span></div>
+    <div class="stat"><span class="stat-num">Growing</span><span class="stat-label">Team</span></div>
   </div>
 </div>
 
-<!-- PAGE BODY -->
+<!-- JOB BOARD -->
 <div class="page">
+  <div class="section-head">
+    <h2>Open Positions</h2>
+    <span class="role-count" id="role-count">3 roles</span>
+  </div>
+  <div class="board" id="job-board"></div>
+</div>
 
-  <!-- LEFT: JOB BOARD -->
-  <main>
-    <div class="section-head">
-      <h2>Open Positions</h2>
-      <span class="role-count" id="role-count">3 roles</span>
-    </div>
-    <div class="board" id="job-board"></div>
-  </main>
+<!-- CONTACT STRIP — below job listings -->
+<div class="contact-strip">
+  <div class="contact-strip-inner">
 
-  <!-- RIGHT: SIDEBAR -->
-  <aside class="sidebar">
-
-    <!-- How to Apply -->
-    <div class="side-card">
-      <h3>How to Apply</h3>
-      <div class="contact-list">
-        <div class="contact-row">
-          <div class="contact-icon ci-email">📧</div>
-          <div class="contact-detail">
-            <strong>Email</strong>
-            <a href="mailto:hr@manlitics.com">hr@manlitics.com</a>
-          </div>
-        </div>
-        <div class="contact-row">
-          <div class="contact-icon ci-wa">💬</div>
-          <div class="contact-detail">
-            <strong>WhatsApp</strong>
-            <a href="https://wa.me/917391094394" target="_blank" rel="noopener">+91 73910 94394</a>
-          </div>
-        </div>
-        <div class="contact-row">
-          <div class="contact-icon ci-phone">📞</div>
-          <div class="contact-detail">
-            <strong>Phone</strong>
-            <a href="tel:07758886468">077588 86468</a>
-          </div>
-        </div>
+    <div class="cs-item">
+      <div class="cs-icon cs-icon-blue">📧</div>
+      <div class="cs-text">
+        <div class="cs-label">Email Us</div>
+        <div class="cs-value"><a href="mailto:hr@manlitics.com">hr@manlitics.com</a></div>
+        <div class="cs-sub">Send your CV directly</div>
       </div>
     </div>
 
-    <!-- Office Location -->
-    <div class="side-card">
-      <h3>Our Office</h3>
-      <div class="address-block">
-        <strong>EFC Office Space – Business Center</strong>
-        1st Floor, Park, Phase 1,<br>
-        Rajiv Gandhi Infotech Park,<br>
-        Hinjawadi, Pimpri-Chinchwad,<br>
-        Maharashtra 411057
+    <div class="cs-item">
+      <div class="cs-icon cs-icon-green">💬</div>
+      <div class="cs-text">
+        <div class="cs-label">WhatsApp</div>
+        <div class="cs-value"><a href="https://wa.me/917391094394" target="_blank" rel="noopener">+91 73910 94394</a></div>
+        <div class="cs-sub">Quick questions welcome</div>
       </div>
-      <a class="map-link" href="https://maps.google.com/?q=EFC+Office+Space+Hinjawadi+Pune" target="_blank" rel="noopener">
-        🗺️ View on Google Maps →
-      </a>
     </div>
 
-  </aside>
+    <div class="cs-item">
+      <div class="cs-icon cs-icon-black">📞</div>
+      <div class="cs-text">
+        <div class="cs-label">Phone</div>
+        <div class="cs-value"><a href="tel:07758886468">077588 86468</a></div>
+        <div class="cs-sub">Mon – Fri, 10am – 6pm</div>
+      </div>
+    </div>
+
+    <div class="cs-item">
+      <div class="cs-icon cs-icon-map">📍</div>
+      <div class="cs-text">
+        <div class="cs-label">Our Office</div>
+        <div class="cs-value"><a href="https://maps.google.com/?q=EFC+Office+Space+Hinjawadi+Pune" target="_blank" rel="noopener">EFC Office, Hinjawadi</a></div>
+        <div class="cs-sub">Rajiv Gandhi Infotech Park, Pune</div>
+      </div>
+    </div>
+
+  </div>
 </div>
 
 <!-- FOOTER -->
 <footer>
-  <strong>Manlitics B2B ITES</strong> · Hinjawadi, Pune, Maharashtra<br>
-  Questions? <a href="mailto:hr@manlitics.com">hr@manlitics.com</a> · <a href="https://wa.me/917391094394">WhatsApp us</a>
+  <strong>Manlitics B2B ITES</strong><br>
+  EFC Office Space, Rajiv Gandhi Infotech Park, Hinjawadi, Pune – 411057<br>
+  <a href="mailto:hr@manlitics.com">hr@manlitics.com</a> &nbsp;·&nbsp;
+  <a href="https://wa.me/917391094394">WhatsApp</a> &nbsp;·&nbsp;
+  <a href="tel:07758886468">077588 86468</a>
 </footer>
 
 <script>
   // ─────────────────────────────────────────────────────────
-  // EDIT THIS LIST to add or remove job openings.
-  // 1. Put the JD file (PDF, Word, etc.) inside the /jobs folder.
-  // 2. Add a new entry below with the correct filename.
-  // 3. Commit to GitHub — page updates automatically.
+  // EDIT THIS LIST to add or remove jobs.
+  // 1. Upload the JD file (PDF/Word) to the /jobs folder.
+  // 2. Add an entry below with the correct filename.
+  // 3. Commit — page updates automatically.
   // ─────────────────────────────────────────────────────────
   const jobs = [
     {
@@ -524,24 +480,24 @@
   statRoles.textContent = jobs.length;
 
   board.innerHTML = jobs.map((job, i) => `
-    <article class="ticket" style="animation-delay:${0.1 + i * 0.1}s">
+    <article class="ticket" style="animation-delay:${0.1 + i * 0.12}s">
       <div class="ticket-top">
-        <div class="ticket-meta-top">
+        <div class="badges">
           <span class="badge badge-open">● Open</span>
           <span class="badge badge-type">${job.type}</span>
-          <span class="posted-label">Posted ${job.posted}</span>
         </div>
+        <span class="posted-lbl">Posted ${job.posted} · ${job.id}</span>
       </div>
       <a class="ticket-title" href="${job.file}" target="_blank" rel="noopener">${job.title}</a>
       <div class="meta-row">
         <span>📍 ${job.location}</span>
-        <span>🏷️ ${job.id}</span>
+        <span>🕒 ${job.type}</span>
       </div>
       <p class="ticket-desc">${job.blurb}</p>
       <div class="ticket-actions">
-        <a class="btn-primary" href="${job.file}" target="_blank" rel="noopener">${fileBtnLabel(job.file)}</a>
-        <a class="btn-secondary" href="https://wa.me/917391094394?text=Hi%2C%20I%20want%20to%20apply%20for%20the%20${encodeURIComponent(job.title)}%20role." target="_blank" rel="noopener">💬 Apply on WhatsApp</a>
-        <a class="btn-outline" href="mailto:hr@manlitics.com?subject=Application%20for%20${encodeURIComponent(job.title)}&body=Hi%20Manlitics%20HR%2C%0A%0AI%20am%20interested%20in%20the%20${encodeURIComponent(job.title)}%20position.%0A%0APlease%20find%20my%20resume%20attached.%0A%0AThank%20you!">✉️ Apply via Email</a>
+        <a class="btn-blue"  href="${job.file}" target="_blank" rel="noopener">${fileBtnLabel(job.file)}</a>
+        <a class="btn-white" href="https://wa.me/917391094394?text=Hi%2C%20I%20want%20to%20apply%20for%20${encodeURIComponent(job.title)}." target="_blank" rel="noopener">💬 WhatsApp Apply</a>
+        <a class="btn-black" href="mailto:hr@manlitics.com?subject=Application – ${encodeURIComponent(job.title)}&body=Hi%20Manlitics%20HR%2C%0A%0AI%20am%20interested%20in%20the%20${encodeURIComponent(job.title)}%20role.%0A%0APlease%20find%20my%20resume%20attached.%0A%0AThank%20you!">✉️ Email Apply</a>
       </div>
     </article>
   `).join('');
